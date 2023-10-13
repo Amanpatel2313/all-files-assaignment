@@ -1,0 +1,104 @@
+1.function reverseStringAfterDelay(input) {
+  // Wait for 2 seconds
+  setTimeout(function () {
+    // Reverse the string
+    const reversedString = input.split('').reverse().join('');
+    // Print the reversed string
+    console.log(reversedString);
+  }, 2000); // 2000 milliseconds (2 seconds)
+}
+
+const input = "Hello, World!";
+reverseStringAfterDelay(input);
+
+2.function generateRandomNumberWithDelay(delayInSeconds) {
+  // Display a countdown message with a specified interval
+  const intervalId = setInterval(function () {
+    console.log(`Generating random number in ${delayInSeconds} seconds...`);
+    delayInSeconds -= 1;
+
+    if (delayInSeconds <= 0) {
+      clearInterval(intervalId);
+      const randomNumber = Math.floor(Math.random() * 100); // Generates a random number between 0 and 99
+      console.log(`Random number generated: ${randomNumber}`);
+    }
+  }, 1000); // 1000 milliseconds (1 second) interval
+
+  // Set the overall delay time (in seconds) for generating the random number
+  setTimeout(function () {
+    clearInterval(intervalId);
+  }, delayInSeconds * 1000); // Convert seconds to milliseconds
+}
+
+const customDelayInSeconds = 3;
+generateRandomNumberWithDelay(customDelayInSeconds);
+
+3.// Define the store's inventory as an object with items and their prices in USD
+const storeInventory = {
+  item1: 20, // Price in USD
+  item2: 30,
+  item3: 40,
+};
+
+// Function to convert USD to INR
+function usdToInr(usdPrice) {
+  const exchangeRate = 80;
+  return usdPrice * exchangeRate;
+}
+
+// Use the map function to create a new object with prices in INR
+const inventoryInRupees = Object.keys(storeInventory).reduce((result, key) => {
+  result[key] = usdToInr(storeInventory[key]);
+  return result;
+}, {});
+
+console.log(inventoryInRupees);
+
+4.// Define a list of books with authors and publication years
+const books = [
+  { title: "Book 1", author: "author 1", year: 2005 },
+  { title: "Book 2", author: "author 2", year: 2015 },
+  { title: "Book 3", author: "author 3", year: 2008 },
+  { title: "Book 4", author: "author 4", year: 2012 },
+  { title: "Book 5", author: "author 5", year: 2009 },
+];
+
+// Filter and capitalize author names for books published after 2010
+const filteredBooks = books
+  .filter((book) => book.year > 2010)
+  .map((book) => ({ ...book, author: book.author.toUpperCase() }));
+
+console.log(filteredBooks);
+
+5.function validateURL(url) {
+  const urlPattern = /^(https?|https):\/\/[a-zA-Z0-9.-]+\.[a-zA-Z]+$/;
+
+  if (urlPattern.test(url)) {
+    console.log("Valid URL: " + url);
+  } else {
+    console.log("Invalid URL: " + url);
+  }
+}
+
+// Test with some URLs
+validateURL("http://www.example.com"); // Valid URL
+validateURL("https://subdomain.example.co.uk"); // Valid URL
+validateURL("ftp://invalid-url.com"); // Invalid URL
+
+6.function validateLinkedInURL(url) {
+  const linkedinURLPattern = /^https:\/\/www\.linkedin\.com\/in\/[a-zA-Z0-9_-]{5,30}[a-zA-Z0-9]$/;
+
+  if (linkedinURLPattern.test(url)) {
+    console.log("Valid LinkedIn Profile URL: " + url);
+  } else {
+    console.log("Invalid LinkedIn Profile URL: " + url);
+  }
+}
+
+// Test with some LinkedIn profile URLs
+validateLinkedInURL("https://www.linkedin.com/in/johndoe123"); // Valid LinkedIn Profile URL
+validateLinkedInURL("https://www.linkedin.com/in/jane_smith"); // Valid LinkedIn Profile URL
+validateLinkedInURL("https://www.linkedin.com/in/user-name-too-long-31"); // Invalid LinkedIn Profile URL
+validateLinkedInURL("https://www.linkedin.com/company/companyname"); // Invalid LinkedIn Profile URL
+
+
